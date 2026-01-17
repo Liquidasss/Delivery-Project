@@ -21,7 +21,7 @@ public class DeliveryDao {
     }
 
     @Transactional
-    public List<Delivery> getDeliveries(Delivery delivery){
+    public List<Delivery> getDeliveries(){
         return this.sessionFactory
                 .getCurrentSession()
                 .createQuery("FROM DELIVERY")
@@ -29,12 +29,12 @@ public class DeliveryDao {
     }
 
     @Transactional
-    public Delivery getDelivery(int id){
-        return this.sessionFactory.getCurrentSession().get(Delivery.class, id);
+    public void updateDelivery(Delivery delivery){
+        this.sessionFactory.getCurrentSession().update(delivery);
     }
 
-    public Delivery updateDelivery(Delivery delivery){
-        this.sessionFactory.getCurrentSession().update();
+    @Transactional
+    public void deleteDelivery(Delivery delivery){
+        this.sessionFactory.getCurrentSession().detach(delivery);
     }
-
 }

@@ -4,10 +4,7 @@ import com.spring.liquidasss.enums.TypeOfVehicle;
 import jakarta.persistence.*;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.RequiredArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import java.util.List;
 
@@ -15,7 +12,7 @@ import java.util.List;
 @Getter
 @Setter
 @NoArgsConstructor
-@RequiredArgsConstructor
+@AllArgsConstructor
 @Table(name = "DELIVERY")
 public class Delivery {
 
@@ -29,11 +26,11 @@ public class Delivery {
     private TypeOfVehicle typeOfVehicle;
 
     @OneToMany(mappedBy = "delivery")
-    private List<Storehouse> products;
+    private List<Product> products;
 
     private double weight;
 
     @Embedded
-    private City city;
+    private DeliveryUserId deliveryUserId;
 
 }

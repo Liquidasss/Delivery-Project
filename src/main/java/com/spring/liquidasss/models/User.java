@@ -4,16 +4,13 @@ import com.spring.liquidasss.enums.Role;
 import jakarta.persistence.*;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.RequiredArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 @Entity
 @Getter
 @Setter
 @NoArgsConstructor
-@RequiredArgsConstructor
+@AllArgsConstructor
 @Table(name = "CUSTOMER")
 public class User {
 

@@ -1,18 +1,15 @@
 package com.spring.liquidasss.models;
 
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.RequiredArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 @Entity
 @Getter
 @Setter
 @NoArgsConstructor
-@RequiredArgsConstructor
-@Table(name = "STOREHOUSE")
-public class Storehouse {
+@AllArgsConstructor
+@Table(name = "PRODUCT")
+public class Product {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

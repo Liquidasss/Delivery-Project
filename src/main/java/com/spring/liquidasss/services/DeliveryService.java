@@ -2,16 +2,20 @@ package com.spring.liquidasss.services;
 
 import com.spring.liquidasss.dao.DeliveryDao;
 import com.spring.liquidasss.models.Delivery;
-import lombok.AllArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
-@AllArgsConstructor
 public class DeliveryService {
 
     private DeliveryDao deliveryDao;
+
+    @Autowired
+    public DeliveryService(DeliveryDao deliveryDao) {
+        this.deliveryDao = deliveryDao;
+    }
 
     public Delivery addDelivery(Delivery delivery){
         return deliveryDao.addDelivery(delivery);

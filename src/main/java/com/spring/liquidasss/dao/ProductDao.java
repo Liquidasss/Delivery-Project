@@ -1,19 +1,23 @@
 package com.spring.liquidasss.dao;
 
 import com.spring.liquidasss.models.Product;
-import lombok.Setter;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
-@Setter
 @Repository
 public class ProductDao {
 
     private SessionFactory sessionFactory;
+
+    @Autowired
+    public ProductDao(SessionFactory sessionFactory) {
+        this.sessionFactory = sessionFactory;
+    }
 
     @Transactional
     public List<Product> getProducts(){

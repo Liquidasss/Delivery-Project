@@ -5,16 +5,21 @@ import com.spring.liquidasss.models.User;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
-@Setter
 @Repository
 public class UserDao {
 
     private SessionFactory sessionFactory;
+
+    @Autowired
+    public UserDao(SessionFactory sessionFactory) {
+        this.sessionFactory = sessionFactory;
+    }
 
     @Transactional
     public List<User> getAllUsers(){
@@ -30,9 +35,9 @@ public class UserDao {
     }
 
     @Transactional
-    public User getUser(String email, String password){
-        Query query = sessionFactory.getCurrentSession().createQuery("from CUSTOMER where email = :email");
-        query.setParameter("email", email);
+    public User getUser(String username, String password){
+        Query query = sessionFactory.getCurrentSession().createQuery("from CUSTOMER where username = :username");
+        query.setParameter("username", username);
 
         try{
             User user = (User) query.getSingleResult();
@@ -49,16 +54,16 @@ public class UserDao {
     }
 
     @Transactional
-    public boolean userExists(String email){
-        Query query = sessionFactory.getCurrentSession().createQuery("from CUSTOMER where email = :email");
-        query.setParameter("email",email);
+    public boolean userExists(String username){
+        Query query = sessionFactory.getCurrentSession().createQuery("from CUSTOMER where username = :username");
+        query.setParameter("username",username);
         return !query.getResultList().isEmpty();
     }
 
     @Transactional
-    public User getUserByEmail(String email){
-        Query<User> query = sessionFactory.getCurrentSession().createQuery("from CUSTOMER where email = :email", User.class);
-        query.setParameter("email",email);
+    public User getUserByUsername(String username){
+        Query<User> query = sessionFactory.getCurrentSession().createQuery("from CUSTOMER where username = :username", User.class);
+        query.setParameter("username",username);
 
         try {
             return query.getSingleResult();

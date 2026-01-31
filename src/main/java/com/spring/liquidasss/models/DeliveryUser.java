@@ -1,16 +1,8 @@
 package com.spring.liquidasss.models;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
 
-@Getter
-@Setter
 @Entity
-@NoArgsConstructor
-@AllArgsConstructor
 @Table(name = "DELIVERY_USER")
 public class DeliveryUser {
 
@@ -27,5 +19,38 @@ public class DeliveryUser {
     @JoinColumn(name = "user_id")
     private User user;
 
+    public DeliveryUser() {}
 
+    public DeliveryUser(DeliveryUserId id, Delivery delivery, User user) {
+        this.id = id;
+        this.delivery = delivery;
+        this.user = user;
+    }
+
+    public DeliveryUserId getId() {
+        return id;
+    }
+
+    public void setId(DeliveryUserId id) {
+        this.id = id;
+    }
+
+    public Delivery getDelivery() {
+        return delivery;
+    }
+
+    public void setDelivery(Delivery delivery) {
+        this.delivery = delivery;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
 }
+
+
+

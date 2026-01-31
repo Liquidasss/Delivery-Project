@@ -1,18 +1,22 @@
 package com.spring.liquidasss.dao;
 
 import com.spring.liquidasss.models.Delivery;
-import lombok.Setter;
 import org.hibernate.SessionFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
-@Setter
 @Repository
 public class DeliveryDao {
 
     private SessionFactory sessionFactory;
+
+    @Autowired
+    public DeliveryDao(SessionFactory sessionFactory) {
+        this.sessionFactory = sessionFactory;
+    }
 
     @Transactional
     public Delivery addDelivery(Delivery delivery){
